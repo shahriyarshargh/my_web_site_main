@@ -1,7 +1,7 @@
 from django.db import models
 
 # Create your models here.
-class post(models.Model):
+class Post(models.Model):
     title = models.CharField(max_length=600)
     content = models.TextField()
     counted_view = models.TextField(default=0)
