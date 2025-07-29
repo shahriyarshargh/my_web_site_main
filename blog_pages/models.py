@@ -28,18 +28,14 @@ class Post(models.Model):
         return f"{self.id} – {self.title}"
 
     def get_previous_post(self):
-        """
-        برمی‌گرداند پست ساخته‌شده قبل از خود (بر اساس created_date) یا None
-        """
+        
         return Post.objects.filter(
             created_date__gt=self.created_date,
             status=True
         ).order_by('created_date').first()
 
     def get_next_post(self):
-        """
-        برمی‌گرداند پست ایجادشده بعد از خود (بر اساس created_date) یا None
-        """
+       
         return Post.objects.filter(
             created_date__lt=self.created_date,
             status=True

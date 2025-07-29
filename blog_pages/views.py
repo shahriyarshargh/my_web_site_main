@@ -9,27 +9,27 @@ def blog_view(request):
 
 
 def blog_single(request, pid):
-    # ۱. واکشیِ پست جاری
+    
     post = get_object_or_404(Post, pk=pid, status=True)
 
-    # ۲. واکشی لیست مرتب از همه پست‌های فعال
+    
     all_posts = list(
         Post.objects
             .filter(status=True)
             .order_by('created_date')
     )
 
-    # ۳. پیدا کردن اندیس پست جاری
+    
     try:
         idx = all_posts.index(post)
     except ValueError:
         idx = None
 
-    # ۴. تعیین پست قبلی و بعدی (در صورت وجود)
+    
     prev_post = all_posts[idx - 1] if idx is not None and idx > 0 else None
     next_post = all_posts[idx + 1] if idx is not None and idx < len(all_posts) - 1 else None
 
-    # ۵. ارسال به قالب
+    
     context = {
         'post': post,
         'prev_post': prev_post,
