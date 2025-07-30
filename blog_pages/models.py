@@ -40,3 +40,6 @@ class Post(models.Model):
             created_date__lt=self.created_date,
             status=True
         ).order_by('-created_date').first()
+    
+    def snippets(self):
+        return self.content[:100] + '...'
