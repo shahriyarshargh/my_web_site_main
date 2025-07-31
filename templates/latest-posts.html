@@ -14,7 +14,7 @@
             {% endfor %}
           </ul>
         </div>
-        <a href="#"><h4 class="title">{{ post.title|truncatechars:40 }}</h4></a>
+        <a href="{% url 'blog:single' post.id %}"><h4 class="title">{{ post.title|truncatechars:40 }}</h4></a>
         <p>{{ post.content|truncatewords:20 }}</p>
         <h6 class="date">{{ post.published_date|date:"j F Y" }}</h6>
       </div>
