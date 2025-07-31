@@ -1,4 +1,5 @@
 from django import template
+from blog_pages.models import Post
 
 register = template.Library()
 
@@ -12,3 +13,7 @@ def word_excerpt(value, arg):
         return ' '.join(words[:arg]) + '...'
     except:
         return value
+@register.inclusion_tag('latestposts.html')
+def latestposts(arg=3):
+    posts = Post.objects.filter(status=1).order_by('published_date')[:arg]
+    return {'posts':posts}
