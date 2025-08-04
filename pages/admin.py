@@ -1,7 +1,7 @@
 from django.contrib import admin
 
 # Register your models here.
-from pages.models import contact
+from pages.models import contact,Newsletter
 
 
 class contactAdmin(admin.ModelAdmin):
@@ -10,3 +10,4 @@ class contactAdmin(admin.ModelAdmin):
     list_filter = ("email",)
     search_fields = ("name","email","created_date","message")
 admin.site.register(contact,contactAdmin)
+admin.site.register(Newsletter)
