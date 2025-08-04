@@ -33,20 +33,6 @@
 			<link rel="stylesheet" href="{% static 'css/main.css' %}">
 		</head>
 		<body>	
-			{% if messages %}
-  <div id="popup-messages">
-    {% for message in messages %}
-      <div class="popup-message {{ message.tags }}">
-        {{ message }}
-      </div>
-    {% endfor %}
-  </div>
-  <script>
-    setTimeout(function() {
-      document.getElementById('popup-messages').style.display = 'none';
-    }, 4000);
-  </script>
-{% endif %}
 			<header id="header">
 				<div class="header-top">
 					<div class="container">
