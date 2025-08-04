@@ -3,7 +3,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Post
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
-from pages.models import contact
+
 
 def blog_view(request):
     post_list = Post.objects.filter(status=True).order_by('created_date')
@@ -47,19 +47,7 @@ def blog_single(request, pid):
     return render(request, 'blog-single.html', context)
 
 
-def test(request, pid):
-    if request.method == 'POST':
-        name= request.POST.get('name')
-        email= request.POST.get('email')
-        subject= request.POST.get('subject')
-        message= request.POST.get('message')
-        c = contact
-        c.name = name
-        c.email = email
-        c.subject = subject
-        c.message = message
-        c.save()
-        print(name, email, subject, message)
+
     
 
 

@@ -7,17 +7,12 @@
   <!-- Add your CSS or JS links here -->
 </head>
 <body>
-	<form action="{% url 'blog/test' %}"> method="post"
+	<form action="{% url 'pages:test' %}" method="post">
     {% csrf_token %}
-    <label>name</label>
-    <input name="name" type="text"><br>
-    <label>email</label>
-    <input name="email" type="email"><br>
-    <label>subject</label>
-    <input name="subject" type="text"><br>
-    <label>message</label>
-    <input name="message" type="text"><br>
-    <button> type="submit">submit</button>
+    
+    {{form.as_p}}
+    
+    <button type="submit">submit</button>
   </form>
 
 </body>
