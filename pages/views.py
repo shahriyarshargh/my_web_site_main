@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from pages.models import contact
-from django.http import HttpResponse,JsonResponse
+from django.http import HttpResponse,JsonResponse,HttpResponseRedirect
 from pages.forms import NameForm, ContactForm,NewsletterForm
 
 def home_view(request):

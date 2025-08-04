@@ -17,4 +17,4 @@ class NewsletterForm(forms.ModelForm):
 
     class Meta:
         model = Newsletter
-        field = '__all__'
+        fields = '__all__'
