@@ -9,6 +9,8 @@ class NameForm(forms.Form):
     message = forms.CharField(widget=forms.Textarea, label='Your message:', max_length=600)
 
 class ContactForm(forms.ModelForm):
+    subject = forms.CharField(label='Subject', max_length=255, required=False)
+    
     class Meta:
         model = contact
         fields = ['name', 'email', 'subject', 'message']
