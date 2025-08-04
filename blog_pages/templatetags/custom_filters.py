@@ -21,5 +21,5 @@ def latestposts(arg=3):
 
 @register.inclusion_tag('latest-posts.html')
 def show_latest_posts():
-    posts = Post.objects.order_by('-published_date')[:6]
+    posts = Post.objects.filter(status=1).order_by('-published_date')[:6]
     return {'latest_posts': posts}

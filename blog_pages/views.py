@@ -2,10 +2,19 @@
 
 from django.shortcuts import render, get_object_or_404
 from .models import Post
+from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
+from pages.models import contact
 
 def blog_view(request):
-    posts = Post.objects.filter(status=True).order_by('created_date')
-    return render(request, 'blog-home.html', { 'posts': posts })
+    post_list = Post.objects.filter(status=True).order_by('created_date')
+    paginator = Paginator(post_list, 3)  # 3 posts per page
+
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    context = { 'posts': page_obj }
+    return render(request, 'blog-home.html', context)
+    
 
 
 def blog_single(request, pid):
@@ -39,5 +48,25 @@ def blog_single(request, pid):
 
 
 def test(request, pid):
-    post = get_object_or_404(Post, pk=pid)
-    return render(request, 'test.html', { 'post': post })
+    if request.method == 'POST':
+        name= request.POST.get('name')
+        email= request.POST.get('email')
+        subject= request.POST.get('subject')
+        message= request.POST.get('message')
+        c = contact
+        c.name = name
+        c.email = email
+        c.subject = subject
+        c.message = message
+        c.save()
+        print(name, email, subject, message)
+    
+
+
+def blog_search(request):
+    posts = Post.objects.filter(status=1)
+    if request.method == 'GET':
+       if s := request.GET.get('s'):
+           posts = posts.filter(content__contains=request.GET.get('s'))
+    context = {'posts':posts}
+    return render(request, 'blog-home.html',context)

@@ -121,37 +121,51 @@
 							{% endfor %}
 												
 		                    <nav class="blog-pagination justify-content-center d-flex">
-		                        <ul class="pagination">
-		                            <li class="page-item">
-		                                <a href="#" class="page-link" aria-label="Previous">
-		                                    <span aria-hidden="true">
-		                                        <span class="lnr lnr-chevron-left"></span>
-		                                    </span>
-		                                </a>
-		                            </li>
-		                            <li class="page-item"><a href="#" class="page-link">01</a></li>
-		                            <li class="page-item active"><a href="#" class="page-link">02</a></li>
-		                            <li class="page-item"><a href="#" class="page-link">03</a></li>
-		                            <li class="page-item"><a href="#" class="page-link">04</a></li>
-		                            <li class="page-item"><a href="#" class="page-link">09</a></li>
-		                            <li class="page-item">
-		                                <a href="#" class="page-link" aria-label="Next">
-		                                    <span aria-hidden="true">
-		                                        <span class="lnr lnr-chevron-right"></span>
-		                                    </span>
-		                                </a>
-		                            </li>
-		                        </ul>
-		                    </nav>
-						</div>
+    <ul class="pagination">
+        {% if posts.has_previous %}
+            <li class="page-item">
+                <a href="?page={{ posts.previous_page_number }}" class="page-link" aria-label="Previous">
+                    <span aria-hidden="true"><span class="lnr lnr-chevron-left"></span></span>
+                </a>
+            </li>
+        {% else %}
+            <li class="page-item disabled">
+                <span class="page-link" aria-label="Previous">
+                    <span aria-hidden="true"><span class="lnr lnr-chevron-left"></span></span>
+                </span>
+            </li>
+        {% endif %}
+
+        {% for num in posts.paginator.page_range %}
+            {% if posts.number == num %}
+                <li class="page-item active">
+                    <a href="?page={{ num }}" class="page-link" aria-current="page">{{ num|add:"0"|slice:"-2" }}</a>
+                </li>
+            {% else %}
+                <li class="page-item">
+                    <a href="?page={{ num }}" class="page-link">{{ num|add:"0"|slice:"-2" }}</a>
+                </li>
+            {% endif %}
+        {% endfor %}
+
+        {% if posts.has_next %}
+            <li class="page-item">
+                <a href="?page={{ posts.next_page_number }}" class="page-link" aria-label="Next">
+                    <span aria-hidden="true"><span class="lnr lnr-chevron-right"></span></span>
+                </a>
+            </li>
+        {% else %}
+            <li class="page-item disabled">
+                <span class="page-link" aria-label="Next">
+                    <span aria-hidden="true"><span class="lnr lnr-chevron-right"></span></span>
+                </span>
+            </li>
+        {% endif %}
+    </ul>
+</nav>
 						<div class="col-lg-4 sidebar-widgets">
-							<div class="widget-wrap">
-								<div class="single-sidebar-widget search-widget">
-									<form class="search-form" action="#">
-			                            <input placeholder="Search Posts" name="search" type="text" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Search Posts'" >
-			                            <button type="submit"><i class="fa fa-search"></i></button>
-			                        </form>
-								</div>
+							    {% include 'blog-search.html' %}
+
 								{% include 'blog-writer.html' %}
 								
 
