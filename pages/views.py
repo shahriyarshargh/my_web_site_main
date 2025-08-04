@@ -25,6 +25,7 @@ def newsletter(request):
             return HttpResponseRedirect('/')
     else:
         return HttpResponseRedirect('/')
+
 def test(request):
     if request.method == 'POST':
         form = ContactForm(request.POST)
