@@ -15,7 +15,7 @@ def blog_view(request):
     context = { 'posts': page_obj }
     return render(request, 'blog-home.html', context)
     if kwargs.get('tag_name') != None:
-        posts = posts.filter(author__username = kwargs['author_username'])
+        posts = posts.filter( tag__name__in=[kwargs['tag_name']])
     
 
 

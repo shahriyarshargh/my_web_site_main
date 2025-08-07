@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django_extensions',
     'robots',
     'debug_toolbar',
+    'django_summernote',
     'taggit',
     'myapp',
     'pages',
