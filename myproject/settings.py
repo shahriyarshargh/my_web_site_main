@@ -54,6 +54,10 @@ INSTALLED_APPS = [
 
 SITE_ID = 2
 ROBOTS_USE_HOST = False
+SUMMERNOTE_THEME = 'bs4'
+SUMMERNOTE_CONFIG = {
+    'iframe': True,
+}   
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -145,3 +149,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
+X_FRAME_OPTIONS = 'SAMEORIGIN'
