@@ -6,4 +6,5 @@ urlpatterns = [
     path('', blog_view, name='blog-home'),
     path("<int:pid>" ,blog_single, name='single'),
     path('search/',blog_search,name='search'),
+    path('tag/<str:tag_name>' , blog_view, name='tag')
 ]
