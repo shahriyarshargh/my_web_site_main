@@ -5,6 +5,7 @@ from django.conf.urls.static import static
 from django.contrib.sitemaps.views import sitemap
 from pages.sitemaps import StaticViewSitemap
 from blog_pages.sitemaps import BlogPageSitemap
+import debug_toolbar
 
 sitemaps ={
     'static' : StaticViewSitemap,
@@ -17,7 +18,9 @@ urlpatterns = [
     path('blog/', include('blog_pages.urls')), 
     path('sitemap.xml',sitemap,{'sitemaps': sitemaps}, name='sitemap'),
     path('robots.txt', include('robots.urls')),
+    path('__debug__/', include(debug_toolbar.urls)),
 ]
+
 
 
 if settings.DEBUG:
