@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.staticfiles',
     'django.contrib.sitemaps',
+    'captcha',
     'django_extensions',
     'robots',
     'debug_toolbar',
