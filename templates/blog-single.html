@@ -61,51 +61,74 @@
 								</div>
 							</div>
 							<div class="navigation-area">
-  <div class="row">
-    {% if prev_post %}
-      <div class="col-lg-6 nav-left flex-row d-flex justify-content-start align-items-center">
-        <div class="thumb">
-          <a href="{% url 'blog:single' prev_post.id %}">
-            <img class="img-fluid" src="{{ prev_post.image.url }}" alt="{{ prev_post.title }}">
-          </a>
-        </div>
-        <div class="arrow">
-          <a href="{% url 'blog:single' prev_post.id %}">
-            <span class="lnr text-white lnr-arrow-left"></span>
-          </a>
-        </div>
-        <div class="detials">
-          <p>Prev Post</p>
-          <a href="{% url 'blog:single' prev_post.id %}">
-            <h4>{{ prev_post.title }}</h4>
-          </a>
-        </div>
-      </div>
-    {% endif %}
+							<div class="row">
+								{% if prev_post %}
+								<div class="col-lg-6 nav-left flex-row d-flex justify-content-start align-items-center">
+									<div class="thumb">
+									<a href="{% url 'blog:single' prev_post.id %}">
+										<img class="img-fluid" src="{{ prev_post.image.url }}" alt="{{ prev_post.title }}">
+									</a>
+									</div>
+									<div class="arrow">
+									<a href="{% url 'blog:single' prev_post.id %}">
+										<span class="lnr text-white lnr-arrow-left"></span>
+									</a>
+									</div>
+									<div class="detials">
+									<p>Prev Post</p>
+									<a href="{% url 'blog:single' prev_post.id %}">
+										<h4>{{ prev_post.title }}</h4>
+									</a>
+									</div>
+								</div>
+								{% endif %}
 
-    {% if next_post %}
-      <div class="col-lg-6 nav-right flex-row d-flex justify-content-end align-items-center">
-        <div class="detials">
-          <p>Next Post</p>
-          <a href="{% url 'blog:single' next_post.id %}">
-            <h4>{{ next_post.title }}</h4>
-          </a>
-        </div>
-        <div class="arrow">
-          <a href="{% url 'blog:single' next_post.id %}">
-            <span class="lnr text-white lnr-arrow-right"></span>
-          </a>
-        </div>
-        <div class="thumb">
-          <a href="{% url 'blog:single' next_post.id %}">
-            <img class="img-fluid" src="{{ next_post.image.url }}" alt="{{ next_post.title }}">
-          </a>
-        </div>
-      </div>
-    {% endif %}
-  </div>
-</div>
-							
+								{% if next_post %}
+								<div class="col-lg-6 nav-right flex-row d-flex justify-content-end align-items-center">
+									<div class="detials">
+									<p>Next Post</p>
+									<a href="{% url 'blog:single' next_post.id %}">
+										<h4>{{ next_post.title }}</h4>
+									</a>
+									</div>
+									<div class="arrow">
+									<a href="{% url 'blog:single' next_post.id %}">
+										<span class="lnr text-white lnr-arrow-right"></span>
+									</a>
+									</div>
+									<div class="thumb">
+									<a href="{% url 'blog:single' next_post.id %}">
+										<img class="img-fluid" src="{{ next_post.image.url }}" alt="{{ next_post.title }}">
+									</a>
+									</div>
+								</div>
+								{% endif %}
+							</div>
+							</div>
+							<div class="comments-area">
+								<div id="disqus_thread"></div>
+								<script>
+									/**
+									*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+									*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+									/*
+									var disqus_config = function () {
+									this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+									this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+									};
+									*/
+									(function() { // DON'T EDIT BELOW THIS LINE
+									var d = document, s = d.createElement('script');
+									s.src = 'https://http-127-0-0-1-8000-jarig7nhsw.disqus.com/embed.js';
+									s.setAttribute('data-timestamp', +new Date());
+									(d.head || d.body).appendChild(s);
+									})();
+								</script>
+								<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+
+
+
+							<!--
 							<div class="comments-area">
 								<h4>05 Comments</h4>
 								<div class="comment-list">
@@ -184,6 +207,7 @@
                                         </div>
                                     </div>
                                 </div>	
+								
 								<div class="comment-list">
                                     <div class="single-comment justify-content-between d-flex">
                                         <div class="user justify-content-between d-flex">
@@ -224,6 +248,7 @@
 									<a href="#" class="primary-btn text-uppercase">Post Comment</a>	
 								</form>
 							</div>
+						-->
 						</div>
 						<div class="col-lg-4 sidebar-widgets">
 							{% include 'blog-search.html' %}
@@ -312,7 +337,7 @@
 									<h4 class="tagcloud-title">Tag Clouds</h4>
 									<ul>
 										{% for tag in post.tags.all %}
-										<li><a href="{% url 'blog:tag' tagnname = tag.name %}">{{ tag.name }}</a></li>
+										<li><a href="{% url 'blog:tag'  tag.name %}">{{ tag.name }}</a></li>
 										{% endfor %}
 										
 									</ul>

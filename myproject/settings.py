@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'multi_captcha_admin',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -59,6 +60,10 @@ SUMMERNOTE_THEME = 'bs4'
 SUMMERNOTE_CONFIG = {
     'iframe': True,
 }   
+
+MULTI_CAPTCHA_ADMIN = {
+    'CAPTCHA_TYPE': 'recaptcha_v2',
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
