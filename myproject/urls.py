@@ -15,6 +15,7 @@ sitemaps ={
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('pages.urls')),
+    path('accounts/', include('accounts.urls')),
     path('blog/', include('blog_pages.urls')), 
     path('sitemap.xml',sitemap,{'sitemaps': sitemaps}, name='sitemap'),
     path('robots.txt', include('robots.urls')),

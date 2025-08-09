@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     'myapp',
     'pages',
     'blog_pages',
+    'accounts',
     
 ]
 
