@@ -21,7 +21,7 @@ def login_view(request):
                 form.add_error(None, 'Username/email or password is incorrect.')
     else:
         form = LoginForm()
-    return render(request, 'accounts/login.html', {'form': form, 'next': next_url})
+    return render(request, 'login.html', {'form': form, 'next': next_url})
 
 @login_required
 def logout_view(request):    
