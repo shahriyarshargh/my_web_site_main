@@ -3,8 +3,9 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Post
 from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
+from django.contrib.auth.decorators import login_required
 
-
+@login_required
 def blog_view(request):
     post_list = Post.objects.filter(status=True).order_by('created_date')
     paginator = Paginator(post_list, 3)  # 3 posts per page
