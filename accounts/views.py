@@ -1,25 +1,24 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
+from django.contrib.auth.forms import AuthenticationForm
+from django.contrib.auth.decorators import login_required
 
 def login_view(request):
-    if request.user.is_authenticated:
-        msg = f'You are already logged in as {request.user.username}'
-        return render(request, 'login.html', {'msg': msg})
-
-    msg = ''
-    if request.method == 'POST':
-        username = request.POST.get('username')
-        password = request.POST.get('password')
-        user = authenticate(request, username=username, password=password)
-        if user is not None:
-            login(request, user)
-            return redirect('/')
+    if not request.user.is_authenticated:
+        if request.method == 'POST':
+            form = AuthenticationForm(data=request.POST)
+            if form.is_valid():
+                username = form.cleaned_data.get('username')
+                password = form.cleaned_data.get('password')
+                user = authenticate(request, username=username, password=password)
+                if user is not None:
+                    login(request, user)
+                    return redirect('home')
         else:
-            msg = 'Invalid username or password'
-
-    return render(request, 'login.html', {'msg': msg})
-
-        
+            form = AuthenticationForm()
+        return render(request, 'login.html', {'form': form})
+    else:
+        return redirect('pages:home')
 
 def logout_view(request):
     return render(request, 'logout.html')
