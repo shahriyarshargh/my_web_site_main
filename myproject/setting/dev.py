@@ -1,5 +1,6 @@
-from myproject.setting import *
-
+from myproject.settings import *
+from pathlib import Path
+BASE_DIR = Path(__file__).resolve().parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
@@ -57,3 +58,5 @@ STATICFILES_DIRS = [BASE_DIR / 'static']
 MEDIA_URL = '/media/'
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
+# turn to false and the site oprates normally
+MAINTENANCE_MODE = True
