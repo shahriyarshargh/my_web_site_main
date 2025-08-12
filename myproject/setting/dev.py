@@ -1,6 +1,6 @@
 from myproject.settings import *
 from pathlib import Path
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = Path(__file__).resolve().parent.parent.parent
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
@@ -54,7 +54,8 @@ DATABASES = {
 }
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [BASE_DIR / 'static']
+STATICFILES_DIRS = [BASE_DIR / "static"]  # source files for dev
+STATIC_ROOT = BASE_DIR / "staticfiles"  
 MEDIA_URL = '/media/'
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
