@@ -7,7 +7,7 @@ from .forms import CustomSignupForm
 from .forms import LoginForm
 
 def login_view(request):
-    next_url = request.GET.get('next') or request.POST.get('next') or 'home'
+    next_url = request.GET.get('next') or request.POST.get('next') or 'pages:home'
     if request.method == 'POST':
         form = LoginForm(request.POST)
         if form.is_valid():
