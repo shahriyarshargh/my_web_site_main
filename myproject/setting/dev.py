@@ -59,4 +59,4 @@ MEDIA_URL = '/media/'
 
 X_FRAME_OPTIONS = 'SAMEORIGIN'
 # turn to false and the site oprates normally
-MAINTENANCE_MODE = True
+MAINTENANCE_MODE = False
