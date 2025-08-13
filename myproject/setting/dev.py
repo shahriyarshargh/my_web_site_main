@@ -10,7 +10,7 @@ SECRET_KEY = 'django-insecure-b^i@(1u9!vlm_@t%8x@x_cu9=*8u1m$ohdowmal5juoh+j9d%1
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['shahriyarshargh.ir','www.shahriyarshargh.ir']
 
 INSTALLED_APPS = [
     'multi_captcha_admin',
